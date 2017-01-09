@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <!-- Reference AngularJS and D3.js -->
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/d3/d3.min.js"></script>
+    <!-- Reference n3-line-chart -->
+    <script src="node_modules/n3-charts/build/LineChart.js"></script>
+    <link rel="stylesheet" href="node_modules/n3-charts/build/LineChart.css">
+  </head>
+  <title>hello-angular-n3-charts</title>
+  <body ng-controller='MainCtrl'>
+
+	<h1>hello-angular-n3-charts</h1>
+
+    <div class="my-chart">
+      <linechart data="data" options="options"></linechart>
+    </div>
+
+    <script type="text/javascript">
+
+      angular
+        .module('app', ['n3-line-chart'])
+
+        .controller('MainCtrl', function($scope) {
+          $scope.data = {
+            dataset0: [
+              {x: 0, val_0: 0, val_1: 0, val_2: 0, val_3: 0},
+              {x: 1, val_0: 47, val_1: 3.894, val_2: 8.47, val_3: 14.347},
+              {x: 2, val_0: 39.5, val_1: 7.174, val_2: 13.981, val_3: 19.991},
+              {x: 3, val_0: 67.5, val_1: 9.32, val_2: 14.608, val_3: 13.509},
+              {x: 4, val_0: 90, val_1: 9.996, val_2: 10.132, val_3: -1.167},
+              {x: 5, val_0: 313, val_1: 9.093, val_2: 2.117, val_3: -15.136}
+            ]
+          };
+
+          $scope.options = {
+            series: [
+              {
+                axis: "y",
+                dataset: "dataset0",
+                key: "val_3",
+                label: "An area series",
+                color: "#1f77b4",
+                type: ['line', 'dot', 'area'],
+                id: 'mySeries0'
+              }
+            ],
+            axes: {x: {key: "x"}}
+          };
+        });
+    </script>
+  </body>
+</html>
